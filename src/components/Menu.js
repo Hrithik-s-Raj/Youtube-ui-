@@ -15,15 +15,23 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import FlagIcon from "@mui/icons-material/Flag";
 import HelpIcon from "@mui/icons-material/Help";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Link } from "react-router-dom";
 
-function Menu() {
+function Menu({ setDarkmode, darkMode }) {
+  const handleClick = () => {
+    setDarkmode(!darkMode);
+  };
   return (
     <Container>
       <Wrapper>
-        <Logo>
-          <Image src="https://www.freepnglogos.com/uploads/youtube-play-red-logo-png-transparent-background-6.png" />
-          Hrithik
-        </Logo>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Logo>
+            <Image src="https://www.freepnglogos.com/uploads/youtube-play-red-logo-png-transparent-background-6.png" />
+            <h4>Hrithik</h4>
+          </Logo>
+        </Link>
+
         <Item>
           <HomeIcon />
           Home
@@ -46,6 +54,14 @@ function Menu() {
           History
         </Item>
         <Hr />
+        <Login>Sing in to like Videos</Login>
+        <Button>
+          {" "}
+          <AccountCircleIcon />
+          Sign In
+        </Button>
+        <Hr />
+        <Title>BEST OF ME</Title>
         <Item>
           <MusicNoteIcon />
           Music
@@ -83,7 +99,7 @@ function Menu() {
           <HelpIcon />
           Help
         </Item>
-        <Item>
+        <Item onClick={handleClick}>
           <LightModeIcon />
           Light Mode
         </Item>
@@ -95,11 +111,13 @@ function Menu() {
 export default Menu;
 
 const Container = styled.div`
-  flex: 1.3;
-  background-color: #202020;
+  flex: 1.4;
+  background-color: ${({ theme }) => theme.bg};
   height: 100vh;
-  color: white;
+  color: ${({ theme }) => theme.text};
   overflow-y: scroll;
+  position: sticky;
+  top: 0;
 `;
 
 const Wrapper = styled.div`
@@ -129,5 +147,27 @@ const Item = styled.div`
 const Hr = styled.hr`
   margin: 15px 0px;
 
-  border: 0.5px solid #373737;
+  border: 0.5px solid ${({ theme }) => theme.soft};
+`;
+
+const Login = styled.div``;
+const Button = styled.button`
+  padding: 5px 15px;
+  background-color: transparent;
+  border: 1px solid #3ea6ff;
+  color: #3ea6ff;
+  border-radius: 3px;
+  font-weight: 500;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
+
+const Title = styled.h2`
+  font-size: 14px;
+  font-weight: 500;
+  color: #aaaaaa;
+  margin-bottom: 20px;
 `;
