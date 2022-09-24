@@ -31,7 +31,6 @@ function Menu({ setDarkmode, darkMode }) {
             <h4>Hrithik</h4>
           </Logo>
         </Link>
-
         <Item>
           <HomeIcon />
           Home
@@ -55,11 +54,14 @@ function Menu({ setDarkmode, darkMode }) {
         </Item>
         <Hr />
         <Login>Sing in to like Videos</Login>
-        <Button>
-          {" "}
-          <AccountCircleIcon />
-          Sign In
-        </Button>
+        <Link to="signin" style={{ textDecoration: "none" }}>
+          <Button>
+            {" "}
+            <AccountCircleIcon />
+            Sign In
+          </Button>
+        </Link>
+
         <Hr />
         <Title>BEST OF ME</Title>
         <Item>
@@ -101,7 +103,7 @@ function Menu({ setDarkmode, darkMode }) {
         </Item>
         <Item onClick={handleClick}>
           <LightModeIcon />
-          Light Mode
+          {darkMode ? "Light" : "Dark"} Mode
         </Item>
       </Wrapper>
     </Container>
@@ -142,6 +144,9 @@ const Item = styled.div`
   gap: 20px;
   cursor: pointer;
   padding: 7.5px 0px;
+  &:hover {
+    background-color: ${({ theme }) => theme.soft};
+  }
 `;
 
 const Hr = styled.hr`

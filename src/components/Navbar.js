@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import { AccountCircleOutlined, SearchOutlined } from "@mui/icons-material";
 import { InputAdornment } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -11,10 +12,12 @@ function Navbar() {
           <Input placeholder="Search" />
           <SearchOutlined />
         </Search>
-        <Button>
-          <AccountCircleOutlined />
-          Sign In
-        </Button>
+        <Link to="signin" style={{ textDecoration: "none" }}>
+          <Button>
+            <AccountCircleOutlined />
+            Sign In
+          </Button>
+        </Link>
       </Wrapper>
     </Container>
   );

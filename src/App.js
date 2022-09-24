@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Video from "./pages/Video";
+import Signin from "./pages/Signin";
 
 function App() {
   const [darkMode, setDarkmode] = useState(true);
@@ -22,18 +23,19 @@ function App() {
       <Container>
         <BrowserRouter>
           <Menu darkMode={darkMode} setDarkmode={setDarkmode} />
-
           <Main>
             <Navbar />
-            <Wrapper>Video Cards</Wrapper>
-            <Routes>
-              <Route path="/">
-                <Route index element={<Home />} />
-                <Route path="video">
-                  <Route path=":id" element={<Video />} />
+            <Wrapper>
+              <Routes>
+                <Route path="/">
+                  <Route index element={<Home />} />
+                  <Route path="signin" element={<Signin />} />
+                  <Route path="video">
+                    <Route path=":id" element={<Video />} />
+                  </Route>
                 </Route>
-              </Route>
-            </Routes>
+              </Routes>
+            </Wrapper>
           </Main>
         </BrowserRouter>
       </Container>
@@ -53,5 +55,5 @@ const Main = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding: 22px 96px;
+  padding: 10px 30px;
 `;
